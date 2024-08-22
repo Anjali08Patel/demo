@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent any  // Runs on the Jenkins master node
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Anjali08Patel/jenkins_stages.git'
+                git url: 'https://github.com/Anjali08Patel/jenkins_stages.git', branch: 'main'
             }
         }
 
@@ -17,12 +17,6 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'scp target/your-app.jar user@your-server:/path/to/deploy/'
             }
         }
     }
